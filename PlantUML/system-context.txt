@@ -1,0 +1,6 @@
+@startuml
+title Spring PetClinic - System Context
+[Spring PetClinic] <<Software System>> as SpringPetClinic
+actor ClinicEmployee
+ClinicEmployee ..> SpringPetClinic : Uses 
+@enduml

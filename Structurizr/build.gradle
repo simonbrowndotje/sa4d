@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin:'application'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'com.structurizr:structurizr-core:1.0.0-RC2'
+}
+
+mainClassName = "FinancialRiskSystem"
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+

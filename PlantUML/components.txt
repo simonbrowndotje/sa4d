@@ -1,0 +1,36 @@
+@startuml
+title Spring PetClinic - Web Application - Components
+actor ClinicEmployee
+[Relational Database] <<Container>> as RelationalDatabase
+package WebApplication {
+ [ClinicService] <<Spring Service>> as ClinicService
+ [CrashController] <<Spring MVC Controller>> as CrashController
+ [OwnerController] <<Spring MVC Controller>> as OwnerController
+ [OwnerRepository] <<Spring Repository>> as OwnerRepository
+ [PetController] <<Spring MVC Controller>> as PetController
+ [PetRepository] <<Spring Repository>> as PetRepository
+ [VetController] <<Spring MVC Controller>> as VetController
+ [VetRepository] <<Spring Repository>> as VetRepository
+ [VisitController] <<Spring MVC Controller>> as VisitController
+ [VisitRepository] <<Spring Repository>> as VisitRepository
+}
+ClinicEmployee ..> CrashController : Uses <<HTTP>>
+ClinicEmployee ..> OwnerController : Uses <<HTTP>>
+ClinicEmployee ..> PetController : Uses <<HTTP>>
+ClinicEmployee ..> VetController : Uses <<HTTP>>
+ClinicEmployee ..> VisitController : Uses <<HTTP>>
+ClinicService ..> OwnerRepository  
+ClinicService ..> PetRepository  
+ClinicService ..> VetRepository  
+ClinicService ..> VisitRepository  
+OwnerController ..> ClinicService  
+OwnerRepository ..> RelationalDatabase : Reads from and writes to <<JDBC>>
+PetController ..> ClinicService  
+PetRepository ..> OwnerRepository  
+PetRepository ..> RelationalDatabase : Reads from and writes to <<JDBC>>
+PetRepository ..> VisitRepository  
+VetController ..> ClinicService  
+VetRepository ..> RelationalDatabase : Reads from and writes to <<JDBC>>
+VisitController ..> ClinicService  
+VisitRepository ..> RelationalDatabase : Reads from and writes to <<JDBC>>
+@enduml

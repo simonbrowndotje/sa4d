@@ -1,0 +1,10 @@
+@startuml
+title Spring PetClinic - Containers
+actor ClinicEmployee
+package SpringPetClinic {
+ [Web Application] <<Container>> as WebApplication
+ [Relational Database] <<Container>> as RelationalDatabase
+}
+ClinicEmployee ..> WebApplication : Uses <<HTTP>>
+WebApplication ..> RelationalDatabase : Reads from and writes to <<JDBC, port 9001>>
+@enduml
